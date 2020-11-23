@@ -1,7 +1,12 @@
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import HomePage from "./components/pages/HomePage";
 
 const App = () => (
-    <div className="App">
-      <h1>City Weather </h1>
+    <div className="site-content">
+      <Header/>
+      <HomePage/>
+      <Footer/>
     </div>
 );
 
