@@ -4,7 +4,7 @@ const Hero = () => {
     return (
         <div className="hero" data-bg-image="images/banner.png" style={{"background-image": "url(images/banner.png)"}}>
 				<div className="container">
-					<form action="#" className="find-location">
+					<form className="find-location">
 						<input type="text" placeholder="Find your location..."/>
 						<input type="submit" value="Find"/>
 					</form>
