@@ -1,9 +1,9 @@
 import React from 'react'
 import umbrellaIcon from '../images/icon-umberella.png'
 import windIcon from '../images/icon-wind.png'
-import data from '../data'
+import data from '../data/weatherdata'
 
-const Forecast = () => {
+const Forecast = ({date}) => {
     console.log(data)
          return ( 
           <div className="forecast-table">
@@ -11,8 +11,8 @@ const Forecast = () => {
 					<div className="forecast-container">
 						<div className="today forecast">
 							<div className="forecast-header">
-								<div className="day">Monday</div>
-								<div className="date">6 Oct</div>
+								<div className="day">{date.toUTCString()}</div>
+		 			<div className="date">{date.getDate()} {date.getMonth()}</div>
 							</div> 
 							<div className="forecast-content">
 								<div className="location">{data.name}</div>
@@ -22,7 +22,7 @@ const Forecast = () => {
 										<img src={data.weather[0].cod} alt="" width="90"/>
 									</div>	
 								</div>
-								<span><img src={umbrellaIcon} alt=""/>{}%</span>
+								<span><img src={umbrellaIcon} alt=""/>{data.main.humidity}%</span>
 								<span><img src={windIcon} alt=""/>{data.wind.speed}km/h</span>
 								<span><img src="images/icon-compass.png" alt=""/>{data.weather[0].description}</span>
 							</div>

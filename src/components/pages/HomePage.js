@@ -7,7 +7,7 @@ const HomePage = () => {
 
     const [city, setCity] = useState('')
     const [weather, setWeather] = useState({})
-
+    const date = new Date()
     const onChange = e => {
         setCity(e.target.value)
         console.log(city)
@@ -30,7 +30,7 @@ const HomePage = () => {
 
             </div>
           </div> 
-          <Forecast />
+          <Forecast date={date} />
         </>
     )
 }
