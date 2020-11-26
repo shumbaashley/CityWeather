@@ -1,13 +1,23 @@
-import React, {useState} from 'react'
-import axios from 'axios'
+import React, {useEffect, useState} from 'react'
 import Image from '../../images/banner.png'
 import Forecast from '../Forecast'
+// import data from '../../data/ipdata'
+import  {getLocationFromIP, getCityWeatherData} from '../../api'
 
 const HomePage = () => {
 
     const [city, setCity] = useState('')
     const [weather, setWeather] = useState({})
+
     const date = new Date()
+    
+
+    useEffect(() => {
+      const {region_name} =  getLocationFromIP()
+      console.log(region_name)
+      setWeather(getCityWeatherData(region_name))
+    }, [])
+
     const onChange = e => {
         setCity(e.target.value)
         console.log(city)
@@ -15,9 +25,9 @@ const HomePage = () => {
 
     const onSubmit = async (e) => {
       e.preventDefault()
-        const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=1c170ed572096092d301640dcdf63c3f`) 
-        setWeather({"data" : res.data})
-      
+        setWeather(getCityWeatherData(city))
+        console.log(weather) 
+
     }
     return (
         <>
@@ -30,7 +40,7 @@ const HomePage = () => {
 
             </div>
           </div> 
-          <Forecast date={date} />
+          <Forecast date={date} weather={weather} />
         </>
     )
 }
